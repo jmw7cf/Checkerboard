@@ -43,8 +43,8 @@ public class CheckerboardController implements Initializable, Startable {
     private int numRows = 8;
     private int numColumns = 8;
     
-    private double heightDisplacement;
-    private double widthDisplacement;
+    private double heightDisplacement=0;
+    private double widthDisplacement=0;
     private double boardWidth;
     private double boardHeight;
     private Color lightColor = Color.RED;
@@ -53,7 +53,6 @@ public class CheckerboardController implements Initializable, Startable {
     @FXML
     private void handleChangeSize(ActionEvent event) {
         MenuItem menuItem = (MenuItem)(event.getSource());
-        System.out.println(menuItem);
         
         switch(menuItem.getId()){
             case "size3":
@@ -64,13 +63,13 @@ public class CheckerboardController implements Initializable, Startable {
                 numRows = 8;
                 numColumns = 8;
                 break;
+            case "size10":
+                numRows = 10;
+                numColumns = 10;
+                break;
             case "size16":
                 numRows = 16;
                 numColumns = 16;
-                break;
-            case "size32":
-                numRows = 32;
-                numColumns = 32;
                 break;
             default:
                 numRows = 8;
@@ -122,6 +121,9 @@ public class CheckerboardController implements Initializable, Startable {
         widthDisplacement = stage.getWidth() - anchorPane.getWidth();
         
         ChangeListener<Number> lambdaChangeListener = (ObservableValue<? extends Number> observable, Number oldValue, final Number newValue) -> {
+//            heightDisplacement = stage.getHeight() - anchorPane.getHeight();
+//            widthDisplacement = stage.getWidth() - anchorPane.getWidth();
+            System.out.println("stageheight: " + stage.getHeight() + " anchorHeight: " + anchorPane.getHeight() + " displacement: " + heightDisplacement);
             refresh();
         };
         
@@ -132,16 +134,17 @@ public class CheckerboardController implements Initializable, Startable {
     }
     
     public void refresh(){
-//        System.out.println("Stage height: " + stage.getHeight() + " heightDisplacement: " + heightDisplacement + " anchorPaneHeight: " + anchorPane.getHeight());
-        this.boardHeight = stage.getHeight() - heightDisplacement;
-        this.boardWidth = stage.getWidth() - widthDisplacement;
+        System.out.println("Stage height: " + stage.getHeight() + " heightDisplacement: " + heightDisplacement + " anchorPaneHeight: " + anchorPane.getHeight());
+        System.out.println("Stage width: " + stage.getWidth() + " widthDisplacement: " + widthDisplacement + " anchorPaneWidth: " + anchorPane.getWidth());
         
+        boardHeight = stage.getHeight() - heightDisplacement;
+        boardWidth = stage.getWidth() - widthDisplacement;
         Checkerboard checkerboard = new Checkerboard(numRows, numColumns, boardWidth, boardHeight, lightColor, darkColor);
         AnchorPane board = checkerboard.getBoard();
         
         clearBoard();
-
         anchorPane.getChildren().addAll(board);
+        anchorPane.clearConstraints(board);
     }
     
     public void clearBoard(){

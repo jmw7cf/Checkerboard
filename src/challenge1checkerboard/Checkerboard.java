@@ -61,7 +61,7 @@ public class Checkerboard {
                 Rectangle square = new Rectangle();
                 square.setHeight(rectHeight);
                 square.setWidth(rectWidth);
-                System.out.println("Square Height : " + square.getHeight() + " Square Width : " + square.getWidth());
+//                System.out.println("Square Height : " + square.getHeight() + " Square Width : " + square.getWidth());
                 square.setY(rectHeight*col);
                 square.setX(rectWidth*row);
                 square.setFill(color);
