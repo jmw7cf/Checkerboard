@@ -20,8 +20,8 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Colors">
             <items>
-                  <MenuItem fx:id="red" mnemonicParsing="false" onAction="#handleRedColor" text="Default" />
-              <MenuItem fx:id="blue" mnemonicParsing="false" onAction="#handleBlueColor" text="Blue" />
+                  <MenuItem fx:id="red" mnemonicParsing="false" onAction="#handleChangeColor" text="Default" />
+              <MenuItem fx:id="blue" mnemonicParsing="false" onAction="#handleChangeColor" text="Blue" />
             </items>
           </Menu>
         </menus>

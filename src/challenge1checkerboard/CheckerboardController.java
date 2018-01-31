@@ -78,29 +78,20 @@ public class CheckerboardController implements Initializable, Startable {
         refresh();
     }
     
-    @FXML
-    private void handleRedColor(ActionEvent event) {
-        this.boardHeight = anchorPane.getHeight();
-        this.boardWidth = anchorPane.getWidth();
+    @FXML 
+    private void handleChangeColor(ActionEvent event){
+        MenuItem menuItem = (MenuItem)(event.getSource());
         
-        lightColor = Color.RED;
-        darkColor = Color.BLACK;
-        
-        Checkerboard checkerboard = new Checkerboard(numRows, numColumns, boardWidth, boardHeight, lightColor, darkColor);
-        AnchorPane board = checkerboard.getBoard();
-        
-        clearBoard();
-
-        anchorPane.getChildren().addAll(board);
-    }
-    
-    @FXML
-    private void handleBlueColor(ActionEvent event) {
-        this.boardHeight = anchorPane.getHeight();
-        this.boardWidth = anchorPane.getWidth();
-        
-        lightColor = Color.LIGHTBLUE;
-        darkColor = Color.DARKBLUE;
+        switch(menuItem.getId()){
+            case "blue":
+                lightColor = Color.LIGHTBLUE;
+                darkColor = Color.DARKBLUE;
+                break;
+            default:
+                lightColor = Color.RED;
+                darkColor = Color.BLACK;
+                break;
+        }
         
         Checkerboard checkerboard = new Checkerboard(numRows, numColumns, boardWidth, boardHeight, lightColor, darkColor);
         AnchorPane board = checkerboard.getBoard();
@@ -121,9 +112,6 @@ public class CheckerboardController implements Initializable, Startable {
         widthDisplacement = stage.getWidth() - anchorPane.getWidth();
         
         ChangeListener<Number> lambdaChangeListener = (ObservableValue<? extends Number> observable, Number oldValue, final Number newValue) -> {
-//            heightDisplacement = stage.getHeight() - anchorPane.getHeight();
-//            widthDisplacement = stage.getWidth() - anchorPane.getWidth();
-            System.out.println("stageheight: " + stage.getHeight() + " anchorHeight: " + anchorPane.getHeight() + " displacement: " + heightDisplacement);
             refresh();
         };
         
@@ -134,11 +122,9 @@ public class CheckerboardController implements Initializable, Startable {
     }
     
     public void refresh(){
-        System.out.println("Stage height: " + stage.getHeight() + " heightDisplacement: " + heightDisplacement + " anchorPaneHeight: " + anchorPane.getHeight());
-        System.out.println("Stage width: " + stage.getWidth() + " widthDisplacement: " + widthDisplacement + " anchorPaneWidth: " + anchorPane.getWidth());
-        
         boardHeight = stage.getHeight() - heightDisplacement;
         boardWidth = stage.getWidth() - widthDisplacement;
+        
         Checkerboard checkerboard = new Checkerboard(numRows, numColumns, boardWidth, boardHeight, lightColor, darkColor);
         AnchorPane board = checkerboard.getBoard();
         
