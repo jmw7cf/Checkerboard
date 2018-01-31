@@ -43,6 +43,8 @@ public class CheckerboardController implements Initializable, Startable {
     private int numRows = 8;
     private int numColumns = 8;
     
+    private double heightDisplacement;
+    private double widthDisplacement;
     private double boardWidth;
     private double boardHeight;
     private Color lightColor = Color.RED;
@@ -116,6 +118,8 @@ public class CheckerboardController implements Initializable, Startable {
     
     public void start(Stage stage) {
         this.stage = stage;
+        heightDisplacement = stage.getHeight() - anchorPane.getHeight();
+        widthDisplacement = stage.getWidth() - anchorPane.getWidth();
         
         ChangeListener<Number> lambdaChangeListener = (ObservableValue<? extends Number> observable, Number oldValue, final Number newValue) -> {
             refresh();
@@ -128,8 +132,9 @@ public class CheckerboardController implements Initializable, Startable {
     }
     
     public void refresh(){
-        boardHeight = stage.getHeight();
-        boardWidth = stage.getWidth();
+//        System.out.println("Stage height: " + stage.getHeight() + " heightDisplacement: " + heightDisplacement + " anchorPaneHeight: " + anchorPane.getHeight());
+        this.boardHeight = stage.getHeight() - heightDisplacement;
+        this.boardWidth = stage.getWidth() - widthDisplacement;
         
         Checkerboard checkerboard = new Checkerboard(numRows, numColumns, boardWidth, boardHeight, lightColor, darkColor);
         AnchorPane board = checkerboard.getBoard();

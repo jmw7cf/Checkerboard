@@ -10,12 +10,12 @@
    <children>
       <MenuBar>
         <menus>
-          <Menu mnemonicParsing="false" onAction="#handleChangeSize" text="Grid">
+          <Menu mnemonicParsing="false" text="Grid">
             <items>
-              <MenuItem fx:id="size16" mnemonicParsing="false" text="16 x 16" />
-              <MenuItem fx:id="size10" mnemonicParsing="false" text="10 x 10" />
-              <MenuItem fx:id="size8" mnemonicParsing="false" text="8 x 8" />
-              <MenuItem fx:id="size3" mnemonicParsing="false" text="3 x 3" />
+              <MenuItem fx:id="size16" mnemonicParsing="false" onAction="#handleChangeSize" text="16 x 16" />
+              <MenuItem fx:id="size10" mnemonicParsing="false" onAction="#handleChangeSize" text="10 x 10" />
+              <MenuItem fx:id="size8" mnemonicParsing="false" onAction="#handleChangeSize" text="8 x 8" />
+              <MenuItem fx:id="size3" mnemonicParsing="false" onAction="#handleChangeSize" text="3 x 3" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Colors">
