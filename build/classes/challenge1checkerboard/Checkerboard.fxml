@@ -26,6 +26,6 @@
           </Menu>
         </menus>
       </MenuBar>
-      <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" VBox.vgrow="ALWAYS" />
+      <AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" VBox.vgrow="ALWAYS" />
    </children>
 </VBox>

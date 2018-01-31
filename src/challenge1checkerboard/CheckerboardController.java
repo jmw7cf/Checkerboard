@@ -127,9 +127,9 @@ public class CheckerboardController implements Initializable, Startable {
         refresh();
     }
     
-    public void refresh(){        
-        this.boardHeight = anchorPane.getHeight();
-        this.boardWidth = anchorPane.getWidth();
+    public void refresh(){
+        boardHeight = stage.getHeight();
+        boardWidth = stage.getWidth();
         
         Checkerboard checkerboard = new Checkerboard(numRows, numColumns, boardWidth, boardHeight, lightColor, darkColor);
         AnchorPane board = checkerboard.getBoard();
